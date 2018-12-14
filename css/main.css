@@ -346,11 +346,10 @@ transform: scale(1)
   grid-row-gap: 2rem;
 }
 .person{
-  display: grid;
-  grid-template-columns: auto auto 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   align-items: center;
-  text-align: left;
-  grid-gap: 1rem;
   border:0.1rem solid rgba(111,87,77,0.6);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -359,6 +358,7 @@ transform: scale(1)
 .person__thumbnail{
   border-radius: 50%;
 }
+
 @media screen and (min-width:768px){
   .drink-card__list{
     grid-template-columns: 1fr 1fr;
