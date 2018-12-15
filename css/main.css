@@ -50,9 +50,11 @@ body{
 .section-title{
   padding: 1rem 0.5rem;
 }
+
 .section-title--left{
-  margin-left: 10rem;
+  margin-left: 5vw;
 }
+
 .section-title__name{
   font-size: 3rem;
   text-transform: capitalize;
@@ -164,6 +166,7 @@ body{
   position: fixed;
   top: 5%;
   right: 5%;
+  z-index: 4;
   font-size: 3.5rem;
   color: var(--yellow);
   cursor: pointer;
@@ -312,7 +315,7 @@ transform: scale(1)
   border-color: green;
 }
 .drink-form__title,.drink-card__title{
-  font-size: 3rem;
+  font-size: 1.8rem;
 }
 .input-name,.input-lastname,.input-email{
   width: 100%;
@@ -363,6 +366,10 @@ transform: scale(1)
   .drink-card__list{
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
+  }
+
+  .drink-form__title,.drink-card__title{
+    font-size: 3rem;
   }
 }
 /* work section */

@@ -1,5 +1,4 @@
 
-
 eventListeners();
 
 function eventListeners() {
@@ -49,9 +48,31 @@ function eventListeners() {
         }
     });
 
+    // display modal - (Work-Section)
+    const links = document.querySelectorAll('.work-item__icon');
+
+    links.forEach(function (item) {
+        item.addEventListener('click', function (event) {
+            ui.showModal(event);
+        });
+    });
+
+    // close modal 
+    document.querySelector('.work-modal__close').addEventListener('click', function () {
+        ui.closeModal();
+    });
+
+
+
 }
 
-//constructor function for UI objects
+
+
+
+
+
+
+// UI Constructor function
 function UI() { }
 
 // hide preloader
@@ -130,7 +151,32 @@ UI.prototype.clearFields = function () {
     document.querySelector('.input-email').value = '';
 }
 
-// Constructor function for customer objects
+// show modal 
+UI.prototype.showModal = function (event) {
+    event.preventDefault();
+    if (event.target.parentElement.classList.contains('work-item__icon')) {
+        let id = event.target.parentElement.dataset.id;
+
+        const modal = document.querySelector('.work-modal');
+        const modalItem = document.querySelector('.work-modal__item');
+
+        modal.classList.add('work-modal--show');
+        modalItem.style.backgroundImage = `url('img/work-${id}.jpeg')`;
+
+    }
+}
+
+// close modal
+UI.prototype.closeModal = function () {
+    document.querySelector('.work-modal').classList.remove('work-modal--show');
+}
+
+
+
+
+
+
+// Customer Constructor function
 function Customer(name, lastname, email) {
     this.name = name;
     this.lastname = lastname;
