@@ -16,6 +16,14 @@ function eventListeners() {
         ui.showNav();
     });
 
+    // hide navbar after selecting clicking on any navlink
+    const navLinks = document.querySelectorAll('.nav__single-link');
+    navLinks.forEach(function(item){
+        item.addEventListener('click', function() {
+            ui.hideNav();
+        });
+    });
+
     //video control on clicking on/off button 
     document.querySelector('.video__switch').addEventListener('click', function () {
         ui.videoControls();
@@ -80,10 +88,16 @@ UI.prototype.hidePreloader = function () {
     document.querySelector(".preloader").style.display = "none";
 }
 
-// show nav bar
+// show navbar
 UI.prototype.showNav = function () {
     document.querySelector('.nav').classList.toggle('nav--show');
 }
+
+// hide navbar
+UI.prototype.hideNav = function () {
+    document.querySelector('.nav').classList.remove('nav--show');
+}
+
 
 // control the video
 UI.prototype.videoControls = function () {
