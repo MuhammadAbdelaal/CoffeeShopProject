@@ -12,17 +12,45 @@ function eventListeners() {
     });
 
     //show navbar on clicking navBtn
+    let navBtnClicked = false;
     document.querySelector('.navBtn').addEventListener('click', function () {
+        
         ui.showNav();
+        
+        navBtnClicked = true;
+
+        // return again to false
+        setTimeout(function () {
+            navBtnClicked = false;
+        }, 100);
     });
 
-    // hide navbar after selecting clicking on any navlink
+    // if any navlink clicked set it is value to true
     const navLinks = document.querySelectorAll('.nav__single-link');
-    navLinks.forEach(function(item){
-        item.addEventListener('click', function() {
-            ui.hideNav();
+    let navLinkClicked = false;
+    navLinks.forEach(function (item) {
+        item.addEventListener('click', function () {
+            
+            navLinkClicked = true;
+
+            // return again to false
+            setTimeout(function () {
+                navLinkClicked = false;
+            }, 100);
         });
     });
+
+    // hide navbar on clicking at any place on the page if it is shown
+    document.querySelector('body').addEventListener('click', function () {
+
+        if (document.querySelector('.nav').classList.contains('nav--show')
+            && navBtnClicked === false
+            && navLinkClicked === false) {
+            ui.hideNav();
+        }
+
+    });
+
 
     //video control on clicking on/off button 
     document.querySelector('.video__switch').addEventListener('click', function () {
