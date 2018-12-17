@@ -12,31 +12,27 @@ function eventListeners() {
     });
 
     //show navbar on clicking navBtn
-    let navBtnClicked = false;
-    document.querySelector('.navBtn').addEventListener('click', function () {
+    document.querySelector('.navBtn').addEventListener('click', function (event) {
         
         ui.showNav();
         
-        navBtnClicked = true;
-
-        // return again to false
-        setTimeout(function () {
-            navBtnClicked = false;
-        }, 100);
+        // the below method {event.cancelBubble = true;} is to prevent triggering body element
+        // by default behavior of bubbling when clicking on nabBtn, because down on the code
+        // I need to target the bode with a click event
+        // but need it not to be triggered when I click on the nabBtn
+        event.cancelBubble = true;
     });
 
+    
     /**
      * hide navbar on clicking at any place on the page if it is shown
-     * unless this click was on the nav button 
-     * or was on a nav link
-     *  */ 
-    document.body.addEventListener('click', function (event) {
-        let navLinkClicked = event.target.classList.contains('nav__single-link');
-        if (document.querySelector('.nav').classList.contains('nav--show')
-        && navBtnClicked === false
-        && navLinkClicked === false) {
+     * unless this click was on a the navbar
+     * */ 
+    document.body.addEventListener('click', function () {
             ui.hideNav();    
-        }
+    });
+    document.querySelector('.nav').addEventListener('click', function(event) {
+        event.cancelBubble = true;
     });
 
 
