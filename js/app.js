@@ -25,30 +25,18 @@ function eventListeners() {
         }, 100);
     });
 
-    // if any navlink clicked set it is value to true
-    const navLinks = document.querySelectorAll('.nav__single-link');
-    let navLinkClicked = false;
-    navLinks.forEach(function (item) {
-        item.addEventListener('click', function () {
-            
-            navLinkClicked = true;
-
-            // return again to false
-            setTimeout(function () {
-                navLinkClicked = false;
-            }, 100);
-        });
-    });
-
-    // hide navbar on clicking at any place on the page if it is shown
-    document.querySelector('body').addEventListener('click', function () {
-
+    /**
+     * hide navbar on clicking at any place on the page if it is shown
+     * unless this click was on the nav button 
+     * or was on a nav link
+     *  */ 
+    document.body.addEventListener('click', function (event) {
+        let navLinkClicked = event.target.classList.contains('nav__single-link');
         if (document.querySelector('.nav').classList.contains('nav--show')
-            && navBtnClicked === false
-            && navLinkClicked === false) {
-            ui.hideNav();
+        && navBtnClicked === false
+        && navLinkClicked === false) {
+            ui.hideNav();    
         }
-
     });
 
 
