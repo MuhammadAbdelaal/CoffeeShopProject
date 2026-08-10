@@ -1,3 +1,7 @@
+// ============================================
+// Main JS file for the project that I worte originally in 2019 and
+//  now in 2026 I am updating it to ES6
+// ============================================
 
 eventListeners();
 
